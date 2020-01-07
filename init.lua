@@ -29,5 +29,6 @@ mash = { 'ctrl', 'alt', 'cmd' }
 hs.hotkey.bind(mash, 'Left',  function() hs.window.focusedWindow():move(units.left50,  nil, true) end)
 hs.hotkey.bind(mash, 'Right', function() hs.window.focusedWindow():move(units.right50, nil, true) end)
 hs.hotkey.bind(mash, 'Up',    function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
+hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
 
 hs.hotkey.bind(mash, 'n', moveWindowToNextDisplay)
