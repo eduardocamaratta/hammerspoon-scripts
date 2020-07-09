@@ -1,7 +1,14 @@
 hs.window.animationDuration = 0
+
 units = {
   left50        = { x = 0.00, y = 0.00, w = 0.50, h = 1.00 },
   right50       = { x = 0.50, y = 0.00, w = 0.50, h = 1.00 },
+  top50         = { x = 0.00, y = 0.00, w = 1.00, h = 0.50 },
+  bottom50      = { x = 0.00, y = 0.50, w = 1.00, h = 0.50 },
+  topLeft       = { x = 0.00, y = 0.00, w = 0.50, h = 0.50 },
+  topRight      = { x = 0.50, y = 0.00, w = 0.50, h = 0.50 },
+  bottomLeft    = { x = 0.00, y = 0.50, w = 0.50, h = 0.50 },
+  bottomRight   = { x = 0.50, y = 0.50, w = 0.50, h = 0.50 },
   maximum       = { x = 0.00, y = 0.00, w = 1.00, h = 1.00 }
 }
 
@@ -21,14 +28,18 @@ function moveWindowToNextDisplay()
   windowFrame.w = ((windowFrame.w / focusedScreenFrame.w) * nextScreenFrame.w)
 
   -- Set the focused window's new frame dimensions
-  focusedWindow:setFrame(windowFrame)  
+  focusedWindow:setFrame(windowFrame)
 end
 
 mash = { 'ctrl', 'alt', 'cmd' }
 
-hs.hotkey.bind(mash, 'Left',  function() hs.window.focusedWindow():move(units.left50,  nil, true) end)
-hs.hotkey.bind(mash, 'Right', function() hs.window.focusedWindow():move(units.right50, nil, true) end)
-hs.hotkey.bind(mash, 'Up',    function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
-hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.maximum, nil, true) end)
-
-hs.hotkey.bind(mash, 'n', moveWindowToNextDisplay)
+hs.hotkey.bind(mash, 'Left',  function() hs.window.focusedWindow():move(units.left50,      nil, true) end)
+hs.hotkey.bind(mash, 'Right', function() hs.window.focusedWindow():move(units.right50,     nil, true) end)
+hs.hotkey.bind(mash, 'Up',    function() hs.window.focusedWindow():move(units.top50,       nil, true) end)
+hs.hotkey.bind(mash, 'Down',  function() hs.window.focusedWindow():move(units.bottom50,    nil, true) end)
+hs.hotkey.bind(mash, '9',     function() hs.window.focusedWindow():move(units.topLeft,     nil, true) end)
+hs.hotkey.bind(mash, '0',     function() hs.window.focusedWindow():move(units.topRight,    nil, true) end)
+hs.hotkey.bind(mash, 'o',     function() hs.window.focusedWindow():move(units.bottomLeft,  nil, true) end)
+hs.hotkey.bind(mash, 'p',     function() hs.window.focusedWindow():move(units.bottomRight, nil, true) end)
+hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.maximum,     nil, true) end)
+hs.hotkey.bind(mash, 'n',     moveWindowToNextDisplay)
