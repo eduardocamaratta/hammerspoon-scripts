@@ -48,4 +48,5 @@ hs.hotkey.bind(mash, 'n',     moveWindowToNextDisplay)
 -- in case the mapping doesn't work automatically for any reason
 -- If you want to really use the symbols § and ± you can always copy them from the internet :D
 hs.hotkey.bind({}, '§', function() hs.eventtap.keyStrokes('`') end)
+hs.hotkey.bind({ 'cmd' }, '§', function() hs.eventtap.event.newKeyEvent( { 'cmd' }, '`', true):post() end)
 hs.hotkey.bind({ 'shift' }, '§', function() hs.eventtap.event.newKeyEvent( { 'alt' }, 'n', true):post() end)
