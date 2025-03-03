@@ -43,3 +43,9 @@ hs.hotkey.bind(mash, 'o',     function() hs.window.focusedWindow():move(units.bo
 hs.hotkey.bind(mash, 'p',     function() hs.window.focusedWindow():move(units.bottomRight, nil, true) end)
 hs.hotkey.bind(mash, 'm',     function() hs.window.focusedWindow():move(units.maximum,     nil, true) end)
 hs.hotkey.bind(mash, 'n',     moveWindowToNextDisplay)
+
+-- Maps the key between the left shift and the Z key to what it should really be on an US International keyboard layout
+-- in case the mapping doesn't work automatically for any reason
+-- If you want to really use the symbols § and ± you can always copy them from the internet :D
+hs.hotkey.bind({}, '§', function() hs.eventtap.keyStrokes('`') end)
+hs.hotkey.bind({ 'shift' }, '§', function() hs.eventtap.event.newKeyEvent( { 'alt' }, 'n', true):post() end)
