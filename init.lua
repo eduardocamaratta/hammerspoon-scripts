@@ -50,3 +50,24 @@ hs.hotkey.bind(mash, 'n',     moveWindowToNextDisplay)
 hs.hotkey.bind({}, '§', function() hs.eventtap.keyStrokes('`') end)
 hs.hotkey.bind({ 'cmd' }, '§', function() hs.eventtap.event.newKeyEvent( { 'cmd' }, '`', true):post() end)
 hs.hotkey.bind({ 'shift' }, '§', function() hs.eventtap.event.newKeyEvent( { 'alt' }, 'n', true):post() end)
+
+-- Caffeinate: Hammerspoon extension
+
+caffeine = hs.menubar.new()
+function setCaffeineDisplay()
+  if hs.caffeinate.get("displayIdle") then
+    caffeine:setTitle("☕️")
+  else
+    caffeine:setTitle("💤")
+  end
+end
+
+function caffeineClicked()
+  hs.caffeinate.toggle("displayIdle")
+  setCaffeineDisplay()
+end
+
+if caffeine then
+    caffeine:setClickCallback(caffeineClicked)
+    setCaffeineDisplay()
+end
